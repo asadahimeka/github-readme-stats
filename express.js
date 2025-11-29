@@ -16,6 +16,8 @@ router.get("/wakatime", wakatimeCard);
 router.get("/gist", gistCard);
 
 app.use("/api", router);
+app.use("/robots.txt", (_, res) => res.end('User-agent: *\nDisallow: /'));
+app.use("/", (_, res) => res.end('Hello'));
 
 const port = process.env.PORT || process.env.port || 9000;
 app.listen(port, "0.0.0.0", () => {
